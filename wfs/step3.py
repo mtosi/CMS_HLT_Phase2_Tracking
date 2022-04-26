@@ -315,6 +315,11 @@ if options.wf == -1:
     customizeOriginal_v6(process,timing)
     process.hltPhase2TrimmedPixelVertices = process.MeasurementTrackerEvent.clone()
 
+if options.wf == -9:
+    suff = "m9"
+    customizeOriginal_pixelTracksWithMTD(process,timing)
+    process.hltPhase2TrimmedPixelVertices = process.MeasurementTrackerEvent.clone()
+
 if options.allpata and options.patatrack:
     suff = suff + "_tripFromTracks"
     process.hltPhase2PixelTracksCleaner.rhoVtx = 100.0 

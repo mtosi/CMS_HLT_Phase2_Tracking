@@ -19,6 +19,14 @@ validation_original = cms.Path(hltPhase2TrackValidatorPixelTrackingOnly
                                +hltPhase2TrackValidatorBHadronTrackingOnly)
                              # +hltPhase2TrackValidatorSeedingTrackingOnly)
 
+validation_mtd = cms.Path(
+    hltPhase2TrackValidatorPixelTrackingOnly
+    +hltPhase2TrackValidatorTrackingOnly
+    +hltPhase2TrackValidatorFromPVStandalone
+    +hltPhase2TrackValidatorBHadronTrackingOnly
+    +hltPhase2TrackValidatorPixelTrackExtendedWithMTD
+)
+
 validation_purel1 = cms.Path(hltPhase2TrackValidatorL1)
 
 validation_l1initial = cms.Path(hltPhase2TrackValidatorPixelTrackingOnly + hltPhase2TrackValidatorTrackingOnly + hltPhase2TrackValidatorL1)

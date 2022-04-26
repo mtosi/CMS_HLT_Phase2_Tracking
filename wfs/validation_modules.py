@@ -1178,3 +1178,12 @@ hltPhase2TrackValidatorSeedingTrackingOnly = cms.EDProducer("MultiTrackValidator
 #                              #hltPhase2TrackValidatorBHadronTrackingOnly +
 #                              #hltPhase2TrackValidatorSeedingTrackingOnly
 # )
+
+hltPhase2TrackValidatorPixelTrackExtendedWithMTD = hltPhase2TrackValidator.clone()
+hltPhase2TrackValidatorPixelTrackExtendedWithMTD.associators = cms.untracked.VInputTag("hltPhase2TrackingParticlePixelTrackAsssociation")
+hltPhase2TrackValidatorPixelTrackExtendedWithMTD.dirName = cms.string('Tracking/PixelTrackWithMTD/')
+hltPhase2TrackValidatorPixelTrackExtendedWithMTD.label = cms.VInputTag("hltPixelTrackExtenderWithMTDBase")
+hltPhase2TrackValidatorPixelTrackExtendedWithMTD.label_vertex = cms.untracked.InputTag("hltPhase2PixelVertices")
+hltPhase2TrackValidatorPixelTrackExtendedWithMTD.trackCollectionForDrCalculation = cms.InputTag("hltPixelTrackExtenderWithMTDBase")
+hltPhase2TrackValidatorPixelTrackExtendedWithMTD.vertexAssociator = cms.untracked.InputTag("hltPhase2PixelVertexAssociatorByPositionAndTracks")
+

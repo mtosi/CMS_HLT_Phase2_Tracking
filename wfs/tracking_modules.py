@@ -2171,3 +2171,42 @@ hltPhase2PixelTracksClean = cms.EDProducer("RecoTrackViewRefSelector",
     usePV = cms.bool(False),
     vertexTag = cms.InputTag("")#hltPhase2PixelVertices") #("hltPhase2OfflinePrimaryVertices")
 )
+
+
+hltPixelTrackExtenderWithMTDBase = cms.EDProducer('TrackExtenderWithMTD',
+  tracksSrc = cms.InputTag('hltPhase2PixelTracks'),
+  trjtrkAssSrc = cms.InputTag('hltPhase2PixelTracks'),
+  hitsSrc = cms.InputTag('hltMTDTrackingRecHits'),
+  beamSpotSrc = cms.InputTag('offlineBeamSpot'),
+  genVtxPositionSrc = cms.InputTag('genParticles', 'xyz0'),
+  genVtxTimeSrc = cms.InputTag('genParticles', 't0'),
+  vtxSrc = cms.InputTag('hltPhase2PixelVertices'), #offlinePrimaryVertices4D'),
+  updateTrackTrajectory = cms.bool(True),
+  updateTrackExtra = cms.bool(True),
+  updateTrackHitPattern = cms.bool(True),
+  TransientTrackBuilder = cms.string('TransientTrackBuilder'),
+  MTDRecHitBuilder = cms.string('MTDRecHitBuilder'),
+  Propagator = cms.string('PropagatorWithMaterialForMTD'),
+  TrackTransformer = cms.PSet(
+    DoPredictionsOnly = cms.bool(False),
+    Fitter = cms.string('KFFitterForRefitInsideOut'),
+    Smoother = cms.string('KFSmootherForRefitInsideOut'),
+    Propagator = cms.string('PropagatorWithMaterialForMTD'),
+    RefitDirection = cms.string('alongMomentum'),
+    RefitRPCHits = cms.bool(True), # WHAT ?!!?
+    TrackerRecHitBuilder = cms.string('WithTrackAngle'),
+    MuonRecHitBuilder = cms.string('MuonRecHitBuilder'),
+    MTDRecHitBuilder = cms.string('MTDRecHitBuilder')
+  ),
+  estimatorMaxChi2 = cms.double(500),
+  estimatorMaxNSigma = cms.double(10),
+  btlChi2Cut = cms.double(50),
+  btlTimeChi2Cut = cms.double(10),
+  etlChi2Cut = cms.double(50),
+  etlTimeChi2Cut = cms.double(10),
+  useVertex = cms.bool(False),
+  useSimVertex = cms.bool(False),
+  dZCut = cms.double(0.1),
+  bsTimeSpread = cms.double(0.2),
+  mightGet = cms.optional.untracked.vstring
+)

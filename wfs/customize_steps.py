@@ -582,6 +582,13 @@ def customizeOriginal_v6(process,timing):
             process.pixelVertexAnalysisTrackingOnly.vertexRecoCollections.append(*["offlinePrimaryVertices"])
             process.schedule.extend([process.prevalidation_original,process.validation_original, process.dqm_original])
 
+def customizeOriginal_pixelTracksWithMTD(process,timing):
+        process.schedule = cms.Schedule(*[process.raw2digi_step,process.pixelTracksWithMTD])
+
+        if not timing:
+            process.pixelVertexAnalysisTrackingOnly.vertexRecoCollections.append(*["offlinePrimaryVertices"])
+            process.schedule.extend([process.prevalidation_original,process.validation_mtd, process.dqm_original ])
+
 def customizeSingleIt(process,timing):
 
     process.schedule = cms.Schedule(*[process.raw2digi_step,process.single_it])

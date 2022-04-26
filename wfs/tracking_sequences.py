@@ -427,3 +427,16 @@ vertexing = cms.Path(
 # ##############################################
 #     hltPhase2GeneralTracks
 # )
+
+hltPhase2PixelTracksExtenderWithMTDSequence = cms.Sequence(
+    hltPhase2PixelTracksSequence +
+    mtdLocalReco + 
+    hltPixelTrackExtenderWithMTDBase
+)
+
+pixelTracksWithMTD = cms.Path(
+    hltPhase2StartUp +
+    hltPhase2PixelTracksExtenderWithMTDSequence + ## MTD
+    hltPhase2PixelVerticesSequence 
+##############################################
+)
