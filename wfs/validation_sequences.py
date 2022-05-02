@@ -23,8 +23,9 @@ validation_mtd = cms.Path(
     hltPhase2TrackValidatorPixelTrackingOnly
     +hltPhase2TrackValidatorTrackingOnly
     +hltPhase2TrackValidatorFromPVStandalone
-    +hltPhase2TrackValidatorBHadronTrackingOnly
+#    +hltPhase2TrackValidatorBHadronTrackingOnly
     +hltPhase2TrackValidatorPixelTrackExtendedWithMTD
+    +hltMTDpixelTracksValid
 )
 
 validation_purel1 = cms.Path(hltPhase2TrackValidatorL1)

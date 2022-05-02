@@ -2210,3 +2210,20 @@ hltPixelTrackExtenderWithMTDBase = cms.EDProducer('TrackExtenderWithMTD',
   bsTimeSpread = cms.double(0.2),
   mightGet = cms.optional.untracked.vstring
 )
+
+hltTofPIDProducer = cms.EDProducer('TOFPIDProducer',
+  tracksSrc    = cms.InputTag('hltPhase2PixelTracks'),#generalTracks'),
+  t0Src        = cms.InputTag('hltPixelTrackExtenderWithMTDBase', 'generalTrackt0'),
+  tmtdSrc      = cms.InputTag('hltPixelTrackExtenderWithMTDBase', 'generalTracktmtd'),
+  sigmat0Src   = cms.InputTag('hltPixelTrackExtenderWithMTDBase', 'generalTracksigmat0'),
+  sigmatmtdSrc = cms.InputTag('hltPixelTrackExtenderWithMTDBase', 'generalTracksigmatmtd'),
+  tofkSrc      = cms.InputTag('hltPixelTrackExtenderWithMTDBase', 'generalTrackTofK'),
+  tofpSrc      = cms.InputTag('hltPixelTrackExtenderWithMTDBase', 'generalTrackTofP'),
+  vtxsSrc      = cms.InputTag('hltPhase2PixelVertices'),#unsortedOfflinePrimaryVertices4DwithPID'),
+  vtxMaxSigmaT      = cms.double(0.025),
+  maxDz             = cms.double(0.1),
+  maxDtSignificance = cms.double(5),
+  minProbHeavy      = cms.double(0.75),
+  fixedT0Error      = cms.double(0),
+  mightGet = cms.optional.untracked.vstring
+)
