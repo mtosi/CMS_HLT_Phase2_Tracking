@@ -5,13 +5,15 @@
 # with command line options: step3 -s RAW2DIGI,RECO:reconstruction_trackingOnly,VALIDATION:@trackingOnlyValidation,DQM:@trackingOnlyDQM --conditions auto:phase2_realistic_T21 --datatier GEN-SIM-RECO,DQMIO -n 10 --eventcontent RECOSIM,DQM --geometry Extended2026D88 --era Phase2C11I13M9 --filein file:step2.root --fileout file:step3.root
 import FWCore.ParameterSet.Config as cms
 
-from Configuration.Eras.Era_Phase2C11I13M9_cff import Phase2C11I13M9
+#from Configuration.Eras.Era_Phase2C11I13M9_cff import Phase2C11I13M9
+from Configuration.Eras.Era_Phase2_cff import Phase2
 
 from SLHCUpgradeSimulations.Configuration.aging import customise_aging_1000
 import FWCore.ParameterSet.VarParsing as VarParsing
 from customize_steps import *
 
-process = cms.Process('RECO',Phase2C11I13M9)
+#process = cms.Process('RECO',Phase2C11I13M9)
+process = cms.Process('RECO',Phase2)
 
 # import of standard configurations
 process.load('Configuration.StandardSequences.Services_cff')
@@ -100,16 +102,16 @@ options.register ('note','',VarParsing.VarParsing.multiplicity.singleton,VarPars
 
 options.parseArguments()
 
-from MCs.inputFiles import PU200_122x
-filelist = PU200_122x
+from MCs.inputFiles import PU200_123x
+filelist = PU200_123x
 
 if options.PU200:
-    from MCs.inputFiles import PU200_122x
-    filelist = PU200_122x
+    from MCs.inputFiles import PU200_123x
+    filelist = PU200_123x
 
 if options.noPU:
-    from MCs.inputFiles import noPU_122x
-    filelist = noPU_122x
+    from MCs.inputFiles import noPU_123x
+    filelist = noPU_123x
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(options.n),
@@ -188,8 +190,7 @@ process.mix.digitizers = cms.PSet()
 for a in process.aliases: delattr(process, a)
 process.RandomNumberGeneratorService.restoreStateLabel=cms.untracked.string("randomEngineStateProducer")
 from Configuration.AlCa.GlobalTag import GlobalTag
-#process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase2_realistic_T21', '')
-process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase2_realistic', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase2_realistic_T21', '')
 
 #print(" ########## debug - 1 - ########## ")
 
