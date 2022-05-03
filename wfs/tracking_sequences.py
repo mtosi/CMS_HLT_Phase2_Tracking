@@ -430,13 +430,18 @@ vertexing = cms.Path(
 
 hltPhase2PixelTracksExtenderWithMTDSequence = cms.Sequence(
     hltPhase2PixelTracksSequence +
-    caloLocalReco + caloTowerForTrk + # uses hbhereco, hfreco, horeco, ecalRecHit
+#    caloLocalReco + 
+#    caloTowerForTrk + # uses hbhereco, hfreco, horeco, ecalRecHit
     mtdLocalReco + 
     hltPixelTrackExtenderWithMTDBase
 )
 
 pixelTracksWithMTD = cms.Path(
-    hltPhase2StartUp +
+    offlineBeamSpot +
+    itLocalReco +
+    #caloLocalReco +
+    trackerClusterCheck +
+#    hltPhase2StartUp +
     hltPhase2PixelTracksExtenderWithMTDSequence + ## MTD
     hltPhase2PixelVerticesSequence 
 ##############################################
