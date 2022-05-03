@@ -18,11 +18,29 @@ hltPhase2PixelVertexAssociatorByPositionAndTracks = cms.EDProducer("VertexAssoci
     trackAssociation = cms.InputTag("hltPhase2TrackingParticlePixelTrackAsssociation")
 )
 
+hltPhase2PixelVertexAssociatorByPositionAndTracksWithMTD = cms.EDProducer("VertexAssociatorByPositionAndTracksProducer",
+    absT = cms.double(-1),
+    absZ = cms.double(0.1),
+    maxRecoT = cms.double(-1),
+    maxRecoZ = cms.double(1000),
+    sharedTrackFraction = cms.double(-1),
+    sigmaT = cms.double(-1),
+    sigmaZ = cms.double(3),
+    trackAssociation = cms.InputTag("hltPhase2TrackingParticlePixelTrackExtendedWithMTDAsssociation")
+)
+
 hltPhase2TrackingParticlePixelTrackAsssociation = cms.EDProducer("TrackAssociatorEDProducer",
     associator = cms.InputTag("quickTrackAssociatorByHits"),#PreSplitting"),
     ignoremissingtrackcollection = cms.untracked.bool(False),
     label_tp = cms.InputTag("mix","MergedTrackTruth"),
     label_tr = cms.InputTag("hltPhase2PixelTracks")
+)
+
+hltPhase2TrackingParticlePixelTrackExtendedWithMTDAsssociation = cms.EDProducer("TrackAssociatorEDProducer",
+    associator = cms.InputTag("quickTrackAssociatorByHits"),#PreSplitting"),
+    ignoremissingtrackcollection = cms.untracked.bool(False),
+    label_tp = cms.InputTag("mix","MergedTrackTruth"),
+    label_tr = cms.InputTag("hltPixelTrackExtenderWithMTDBase")
 )
 
 hltPhase2TrackingParticleL1TrackAsssociation = cms.EDProducer("TrackAssociatorEDProducer",

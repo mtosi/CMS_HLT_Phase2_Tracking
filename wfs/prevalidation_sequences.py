@@ -29,6 +29,13 @@ prevalidation_associators_pixel = cms.Task(
                                      hltPhase2TrackingParticlePixelTrackAsssociation
                                      )
 
+prevalidation_associators_pixelMTD = cms.Task(
+                                        hltPhase2PixelVertexAssociatorByPositionAndTracks,
+                                        hltPhase2TrackingParticlePixelTrackAsssociation,
+                                        hltPhase2PixelVertexAssociatorByPositionAndTracksWithMTD,
+                                        hltPhase2TrackingParticlePixelTrackExtendedWithMTDAsssociation
+                                     )
+
 prevalidation_initial = cms.Task(hltPhase2CutsRecoTracksInitialStep,hltPhase2CutsRecoTracksFromPVPt09InitialStepHp,hltPhase2SeedTracksinitialStepSeeds,
                                            hltPhase2CutsRecoTracksInitialStepByAlgoMask,hltPhase2CutsRecoTracksInitialStepByOriginalAlgo,
                                            hltPhase2CutsRecoTracksInitialStepHp,hltPhase2CutsRecoTracksInitialStepByOriginalAlgoHp,
@@ -91,7 +98,13 @@ prevalidation_l1trip= cms.Path(prevalidation_startup,
                                   prevalidation_highpt,
                                   prevalidation_general)
 
-prevalidation_pixel = cms.Path(prevalidation_commons,prevalidation_associators_pixel,prevalidation_pixelvertex)
+prevalidation_pixel = cms.Path(prevalidation_commons,
+                               prevalidation_associators_pixel,
+                               prevalidation_pixelvertex)
+
+prevalidation_pixelMTD = cms.Path(prevalidation_commons,
+                                  prevalidation_associators_pixelMTD,
+                                  prevalidation_pixelvertex)
 
 prevalidation_all= cms.Path(prevalidation_startup,
                                   prevalidation_l1,

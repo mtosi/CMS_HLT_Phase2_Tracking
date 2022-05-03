@@ -430,6 +430,7 @@ vertexing = cms.Path(
 
 hltPhase2PixelTracksExtenderWithMTDSequence = cms.Sequence(
     hltPhase2PixelTracksSequence +
+    caloTowerForTrk + # uses hbhereco, hfreco, horeco, ecalRecHit
     mtdLocalReco + 
     hltPixelTrackExtenderWithMTDBase
 )
