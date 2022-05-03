@@ -1188,7 +1188,7 @@ hltPhase2TrackValidatorPixelTrackExtendedWithMTD.trackCollectionForDrCalculation
 hltPhase2TrackValidatorPixelTrackExtendedWithMTD.vertexAssociator = cms.untracked.InputTag("hltPhase2PixelVertexAssociatorByPositionAndTracks")
 
 hltMTDpixelTracksValid = cms.EDProducer('MtdTracksValidation',
-  folder = cms.string('Tracking/PixelTracksWithMTD/MTD'),
+  folder = cms.string('Tracking/PixelTrackWithMTD/MTD'),
   inputTagG      = cms.InputTag('hltPhase2PixelTracks'),#generalTracks'),
   inputTagT      = cms.InputTag('hltPixelTrackExtenderWithMTDBase'),
   inputTagV      = cms.InputTag('hltPhase2PixelVertices'), #offlinePrimaryVertices4D'),

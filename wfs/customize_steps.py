@@ -587,7 +587,7 @@ def customizeOriginal_pixelTracksWithMTD(process,timing):
 
         if not timing:
             process.pixelVertexAnalysisTrackingOnly.vertexRecoCollections.append(*["offlinePrimaryVertices"])
-            process.schedule.extend([process.prevalidation_original,process.validation_mtd, process.dqm_original ])
+            process.schedule.extend([process.prevalidation_original,process.validation_mtd, process.dqm_pixelMTD ])
 
 def customizeSingleIt(process,timing):
 
